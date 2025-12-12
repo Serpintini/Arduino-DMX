@@ -85,24 +85,18 @@ void loop() {
   float speed = dmx_slave.getChannelValue (2);
   Serial.println(" program: " + String(macro_number) +" speed: " + String(speed));
   if (speed != 0){
-    if (macro_number == 1){
-      move_at_angle(0, speed);
-    }
-    if (macro_number == 2){
-      move_at_angle(90, speed);
-    }
-    if (macro_number == 3){
-      move_at_angle(180, speed);
-    }
-    if (macro_number == 4){
-      move_at_angle(270, speed);
-    }
-    if (macro_number == 5){
+    if (macro_number == 181){
       sit_and_spin(1, speed);
     }
-    if (macro_number == 6){
+    else if (macro_number == 182){
       sit_and_spin(-1, speed);
     }
+    else{
+      move_at_angle(macro_number*2, speed);
+    }
+  }
+  else {
+    stop_and_pause();
   }
   
     
